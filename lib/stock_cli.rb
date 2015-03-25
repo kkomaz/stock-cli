@@ -28,12 +28,10 @@ class StockCLI
   end
 
 
-  def display_stock_info(input)
-    
+  def display_stock_info(input)   
     scrape = Scraper.new(input)
     stock = StockQuote::Stock.quote("#{input}")
-    if stock.response_code == 404
-
+    if input.length > 5
       puts "Not a valid Stock."
       menu
     else
